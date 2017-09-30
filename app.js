@@ -36,8 +36,21 @@ $(document).ready(function(){
 		}
 	}
 	$('#sessionDec').click(function(){
-		if(sessionLen>1){
-			sessionLen--;
+		if(pause === false){
+			if(sessionLen>1){
+				sessionLen--;
+				$('#sessionDisp').html(sessionLen);
+				$('#timeHead').html('Session');
+				$('#time').html(sessionLen + ":00");
+					seconds = 0;
+					minutes = sessionLen;
+			}
+		}
+	});
+
+	$('#sessionInc').click(function(){
+		if(pause === false){
+			sessionLen++;
 			$('#sessionDisp').html(sessionLen);
 			$('#timeHead').html('Session');
 			$('#time').html(sessionLen + ":00");
@@ -46,18 +59,23 @@ $(document).ready(function(){
 		}
 	});
 
-	$('#sessionInc').click(function(){
-		sessionLen++;
-		$('#sessionDisp').html(sessionLen);
-		$('#timeHead').html('Session');
-		$('#time').html(sessionLen + ":00");
-			seconds = 0;
-			minutes = sessionLen;
+	$('#breakDec').click(function(){
+		if(pause === false){
+			if(breakLen>1){
+			breakLen--;
+			$('#breakDisp').html(breakLen);
+			$('#timeHead').html('Session');
+			$('#time').html(sessionLen + ":00");
+				seconds = 0;
+				minutes = sessionLen;
+			}	
+		}
+		
 	});
 
-	$('#breakDec').click(function(){
-		if(breakLen>1){
-			breakLen--;
+	$('#breakInc').click(function(){
+		if(pause === false){
+			breakLen++;
 			$('#breakDisp').html(breakLen);
 			$('#timeHead').html('Session');
 			$('#time').html(sessionLen + ":00");
@@ -66,17 +84,8 @@ $(document).ready(function(){
 		}
 	});
 
-	$('#breakInc').click(function(){
-		breakLen++;
-		$('#breakDisp').html(breakLen);
-		$('#timeHead').html('Session');
-		$('#time').html(sessionLen + ":00");
-			seconds = 0;
-			minutes = sessionLen;
-	});
 
-
-	$('#start').click(function(){
+	$('#clock').click(function(){
 		if(pause === false){	
 			counting = setInterval(countdown,1000);		
 			pause = true;
