@@ -1,49 +1,44 @@
-var brLen = 5;
-var sLen = 25;
-function startTimer(duration, display) {
-    var timer = duration, minutes, seconds;
-    setInterval(function () {
-        minutes = parseInt(timer / 60, 10)
-        seconds = parseInt(timer % 60, 10);
-
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        display.textContent = minutes + ":" + seconds;
-
-        if (--timer < 0) {
-            timer = duration;
-        }
-    }, 1000);
-}
-
 $(document).ready(function(){
-	$('#breakDisp').html(brLen);
-$('#breakDec').on('click',function(){
-	brLen--;
-	if(brLen>0){
-			$('#breakDisp').html(brLen);		
-	}
-});
-$('#breakInc').on('click',function(){
-	brLen++;
-			$('#breakDisp').html(brLen);		
-});
+	var sessionLen = 25;
+	var breakLen = 2;	
+	var counting;
+	var pause = false;
+	var seconds = 0;
+	var minutes = 25;
 
-	$('#sessionDisp').html(sLen);
-$('#sessionDec').on('click',function(){
-	sLen--;
-	if(sLen>0){
-			$('#sessionDisp').html(sLen);		
+	$('#time').html(minutes + ":00");
+
+	function countdown(){
+		if(minutes === 0 && seconds === 0){
+			if($('#timeHead').text() === 'Session'){
+				$('#timeHead').text('Break');
+				minutes = breakLen;
+				$('#time').html(minutes + ":" + seconds);
+			}
+		else if($('#timeHead').text() === 'Break'){
+			$('#timeHead').text('Session');
+			minutes = sessionLen;
+			$('#time').html(minutes + ":" + seconds);	
+		}
 	}
-});
-$('#sessionInc').on('click',function(){
-	sLen++;
-			$('#sessionDisp').html(sLen);		
-});
-$('#timeBox').on('click',function(){
-	startTimer(sLen*60, document.querySelector('#time'));	
-})
+		else{
+			if(seconds === 0){
+				seconds = 60;
+				minutes--;
+			}
+			seconds--;
+			if(seconds < 10){
+				$('#time').html(minutes + ":0" + seconds);
+			}
+			else{
+				$('#time').html(minutes + ":" + seconds);
+			}
+		}
+	}
+
+	$('#start').click(function(){
+			counting = setInterval(countdown,1000);		
+	});
+
 
 });
-	
