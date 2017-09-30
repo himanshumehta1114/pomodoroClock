@@ -7,6 +7,16 @@
 	margin-top : 50px;
 }
 
+.heading{
+	font-size: 3.5em;
+	font-family: 'Geo', sans-serif;
+	color:#fff;
+}
+
+.ins {
+	color:#fff;
+}
+
 #clock {
 	margin-top: 25px;
 	margin-left:0px;
