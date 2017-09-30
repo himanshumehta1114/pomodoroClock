@@ -35,6 +35,27 @@ $(document).ready(function(){
 			}
 		}
 	}
+	$('#sessionDec').click(function(){
+		if(sessionLen>1){
+			sessionLen--;
+			$('#sessionDisp').html(sessionLen);
+			$('#timeHead').html('Session');
+			$('#time').html(sessionLen + ":00");
+				seconds = 0;
+				minutes = sessionLen;
+		}
+	});
+
+	$('#sessionInc').click(function(){
+		sessionLen++;
+		$('#sessionDisp').html(sessionLen);
+		$('#timeHead').html('Session');
+		$('#time').html(sessionLen + ":00");
+			seconds = 0;
+			minutes = sessionLen;
+	});
+
+
 
 	$('#start').click(function(){
 			counting = setInterval(countdown,1000);		
