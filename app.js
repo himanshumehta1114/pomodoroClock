@@ -77,7 +77,13 @@ $(document).ready(function(){
 
 
 	$('#start').click(function(){
+		if(pause === false){	
 			counting = setInterval(countdown,1000);		
+			pause = true;
+		}else if(pause === true){
+			clearInterval(counting);
+			pause = false;
+		}
 	});
 
 
