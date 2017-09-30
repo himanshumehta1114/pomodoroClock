@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	var sessionLen = 25;
-	var breakLen = 2;	
+	var breakLen = 5;	
 	var counting;
 	var pause = false;
 	var seconds = 0;
@@ -55,6 +55,25 @@ $(document).ready(function(){
 			minutes = sessionLen;
 	});
 
+	$('#breakDec').click(function(){
+		if(breakLen>1){
+			breakLen--;
+			$('#breakDisp').html(breakLen);
+			$('#timeHead').html('Session');
+			$('#time').html(sessionLen + ":00");
+				seconds = 0;
+				minutes = sessionLen;
+		}
+	});
+
+	$('#breakInc').click(function(){
+		breakLen++;
+		$('#breakDisp').html(breakLen);
+		$('#timeHead').html('Session');
+		$('#time').html(sessionLen + ":00");
+			seconds = 0;
+			minutes = sessionLen;
+	});
 
 
 	$('#start').click(function(){
